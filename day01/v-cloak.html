@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../vue-2.4.0.js"></script>
+    <style>
+        [v-cloak]{
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <!-- v-cloak可以解决闪烁的问题 -->
+        <p v-cloak>{{msg}}</p>
+        <!-- v-text默认是没有闪烁问题的,而且会覆盖原有的内容 -->
+        <h2 v-text='msg'>呵呵呵</h2>
+        <h3 v-html='msg'>呵呵呵</h3>
+        <!-- v-bind 提供用于绑定属性的指令,简写:,中间可以写js表达式 -->
+        <input type="text" :value="msg+123">  
+        <!-- v-on 事件绑定机制  -->
+        <input type="button" value="按钮" @click='show'>    
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                msg: '啦啦啦'
+            },
+            methods: {
+                show: function(){
+                    alert(1)
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
