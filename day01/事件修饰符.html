@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../vue-2.4.0.js"></script>
+    <style>
+        .dv{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <!-- .stop 阻止冒泡 -->
+        <!-- <div class="dv" @click='dv1'>
+            <input type="button" value="按钮" @click.stop="btn1">
+        </div> -->
+
+        <!-- .prevent 阻止默认行为 -->
+        <!-- <a href="www.baidu.com" @click.prevent='aa'>点我</a> -->
+
+        <!-- .capture 实现捕获触发事件的机制 -->
+        <!-- <div class="dv" @click.capture='dv1'>
+            <input type="button" value="按钮" @click="btn1">
+        </div> -->
+
+        <!-- .once 值触发一次事件处理函数 -->
+        <input type="button" value="只能点一次哦" @click.once='aa'>
+
+        <!-- self 只会阻止自身冒泡行为的触发 -->
+        <!-- <div class="dv" @click.self='dv1'>
+            <input type="button" value="按钮" @click="btn1">
+        </div> -->
+
+
+    </div>
+    <script>
+        var vm = new Vue({  
+            el: '#app',
+            data: {},
+            methods: {
+                dv1: function(){
+                    console.log(1)
+                },
+                btn1: function(){
+                    console.log(2)
+                },
+                aa: function(){
+                    console.log(3)
+
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

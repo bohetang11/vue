@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../vue-2.4.0.js"></script>
+</head>
+
+<body>
+    <div id="app">
+
+        <p v-for="(user,i) in list">{{user.id}} {{user.name}}</p>
+
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                list: [
+                    {
+                        id:1,
+                        name:'zs'
+                    },
+                    {
+                        id:2,
+                        name:'ls'
+                    },
+                    {
+                        id:3,
+                        name:'ww'
+                    }
+                ]
+            },
+            methods: {}
+        })
+    </script>
+</body>
+
+</html>
