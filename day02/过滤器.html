@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>bohetang</title>
+    <script src="../vue-2.4.0.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <!-- <p>{{msg | money}}</p> -->
+        <p>{{msg | money('$')}}</p>
+
+    </div>
+    <script>
+        // 全局过滤器
+        // Vue.filter('money',function(msg){
+        //     return '$'+msg
+        // })
+
+        // Vue.filter('money',function(msg,arg){
+        //     return arg+'--'+msg
+        // })
+        
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                msg: 888
+            },
+            methods: {},
+
+            //私有过滤器
+            filters:{
+                money:function(msg,arg){
+                    return arg+'++'+msg
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
