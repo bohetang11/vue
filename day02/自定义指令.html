@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>bohetang</title>
+    <script src="../vue-2.4.0.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <p v-color="'red'">我是一个p标签</p>
+        <p v-fontsize="30">我是一个p标签</p>
+    </div>
+    <script>
+        //自定义全局指令
+        Vue.directive('color',{
+            // bind: function(el,binding){
+            //     el.style.color=binding.value
+            // },
+            inserted: function(el,binding){
+                el.style.color=binding.value
+            }
+        })
+
+        var vm = new Vue({
+            el: '#app',
+            data: {},
+            methods: {},
+            directives: {
+                fontsize: function(el,binding){
+                    el.style.fontSize=parseInt(binding.value)+'px'
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

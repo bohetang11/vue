@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>bohetang</title>
+    <script src="../vue-2.4.0.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        id: <input type="text" v-model="id">
+        name: <input type="text" v-model='name'>
+        <input type="button" value="添加" @click="add">
+        <p v-for="item in list" :key="item.id"><input type="checkbox" name="" id="">{{item.id}}--{{item.name}}</p>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                id:'',
+                name:'',
+                list: [
+                    {id:1,name:'zs'},
+                    {id:2,name:'ls'},
+                    {id:3,name:'ww'}
+                ]
+            },
+            methods: {
+                add: function(){
+                    this.list.unshift({id:this.id,name:this.name})
+                    this.id=this.name=''
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

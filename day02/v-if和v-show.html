@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>bohetang</title>
+    <script src="../vue-2.4.0.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <input type="button" value="按钮" @click="flag=!flag">
+        <!-- v-if 是创建标签,不建议频繁切换的时候使用 -->
+        <p v-if="flag">显示和隐藏</p>
+        <!-- v-show是通过添加display:none 来隐藏元素 -->
+        <p v-show="flag">显示和隐藏</p>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                flag: true
+            },
+            methods: {
+                // hidden: function(){
+                //     this.flag=!this.flag
+                // }
+            }
+        })
+    </script>
+</body>
+
+</html>
