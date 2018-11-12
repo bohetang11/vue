@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>bohetang</title>
+    <script src="../vue-2.4.0.js"></script>
+    <style>
+        .my-enter,.my-leave-to{
+            opacity: 0;
+            transform: translateX(100px)
+        }
+        .my-enter-active,.my-leave-active{
+            transition: all .5s ease-in; 
+        }
+
+        .you-enter,.you-leave-to{
+            opacity: 0;
+            transform: translateY(100px)
+        }
+        .you-enter-active,.you-leave-active{
+            transition: all .5s ease-in; 
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <input type="button" value="按钮" @click='flag=!flag'>
+        <transition name="my">
+            <h2 v-show='flag'>这是一个h标签</h2>
+        </transition>
+
+        <transition name="you">
+            <p v-show='flag'>这是一个p标签</p>
+        </transition>
+
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                flag: true
+            },
+            methods: {}
+        })
+    </script>
+</body>
+
+</html>
