@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>bohetang</title>
+    <script src="../vue-2.4.0.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <mycom1></mycom1>
+        <mycom2></mycom2>
+    </div>
+
+    <template id="tpl1">
+        <div>
+            <h1>这是h1标签</h1>
+            <span>这是span标签</span>
+        </div>
+    </template>
+
+    <template id="tpl2">
+        <div>
+            <h2>这是h2标签</h2>
+            <p>这是p标签</p>
+        </div>
+    </template>
+
+    <script>
+        //全局
+        Vue.component('mycom1', {
+            template: '#tpl1'
+        })
+        var vm = new Vue({
+            el: '#app',
+            data: {},
+            methods: {},
+            // 私有
+            components: {
+                'mycom2': {
+                    template: '#tpl2'
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

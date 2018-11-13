@@ -41,7 +41,7 @@
                 <tr v-for="item in list" :key="item.id">
                     <td>{{item.id}}</td>
                     <td>{{item.name}}</td>
-                    <td>{{item.ctime}}</td>
+                    <td>{{item.ctime | time}}</td>
                     <td>
                         <a href="" @click.prevent="del(item.id)">删除</a>
                     </td>
@@ -51,8 +51,21 @@
 
     </div>
     <script>
+        //设置全局根域名
         Vue.http.options.root = 'http://www.lovegf.cn:8899/'
-        // Vue.http.options.emulateJSON = true
+        // 设置全局开启application/x-www-form-urlencoded方式提交表单
+        Vue.http.options.emulateJSON = true
+
+        Vue.filter('time',function(data){
+            let dt=new Date(data)
+            var y=dt.getFullYear().toString().padStart(2,'0')
+            var m=(dt.getMonth()+1).toString().padStart(2,'0')
+            var d=dt.getDate().toString().padStart(2,'0')
+            var h=dt.getHours().toString().padStart(2,'0')
+            var mm=dt.getMinutes().toString().padStart(2,'0')
+            var s=dt.getSeconds().toString().padStart(2,'0')
+            return `${y}-${m}-${d} ${h}:${mm}:${s}`
+        })
         var vm = new Vue({
             el: '#app',
             data: {
