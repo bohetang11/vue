@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>bohetang</title>
+    <script src="../vue-2.4.0.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <mycom @parentfunc="show"></mycom>
+    </div>
+
+    <template id="tpl">
+        <div>
+            <p>这是子组件</p>
+            <input type="button" value="点击" @click="myclick">
+        </div>
+    </template>
+    <script>
+        Vue.component('mycom',{
+            template: '#tpl',
+            data:function(){
+                return {
+                    sonmsg: '子组件数据'
+                }
+            },
+            methods:{
+                myclick(){
+                    this.$emit('parentfunc',this.sonmsg)
+                }
+            }
+        })
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                parentmsg: ''
+            },
+            methods: {
+                show(msg){
+                    this.parentmsg=msg
+                    console.log(this.parentmsg)
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
