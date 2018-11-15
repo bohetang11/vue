@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>bohetang</title>
+    <script src="../vue-2.4.0.js"></script>
+</head>
+
+<body>
+    <!-- 在想要获取的元素身上加一个ref属性,给属性一个名字,在通过$refs.属性名就可以获取到元素 -->
+    <div id="app">
+        <input type="button" value="点我" @click="getelement">   
+        <h2 ref="myh2">这是一个h2标签</h2>
+
+        <login ref='mylogin'></login>
+    </div>
+    <script>
+        var login={
+            template:'<h2>登录组件</h2>',
+            data:function(){
+                return {
+                    msg: '组件数据'
+                }
+            },
+            methods:{
+                show(){
+                    console.log('调用了组件的方法')
+                }
+            }
+        }
+        var vm = new Vue({
+            el: '#app',
+            data: {},
+            methods: {
+                getelement(){
+                    // console.log(this.$refs.myh2.innerText)
+                    console.log(this.$refs.mylogin.msg)
+                    this.$refs.mylogin.show()
+                }
+            },
+            components:{
+                login
+            }
+        })
+    </script>
+</body>
+
+</html>
