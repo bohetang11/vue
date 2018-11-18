@@ -1,9 +1,24 @@
+import Vue from 'vue'
 
+// import Vue from '../node_modules/vue/dist/vue.js'
+import VueRouter from 'vue-router'
 
-import "./css/index.css"
+Vue.use(VueRouter)
 
-import "./css/test.less"
+import app from './app.vue'
+import router from './router.js'
 
-import "./css/demo.scss"
+var vm = new Vue({
+    el: '#app',
+    data: {
+        msg: 123
+    },
+    methods: {},
+    render: c => c(app),
+    router
+})
 
-import "./js/index.js" 
+// import test,{user,user2} from './test.js'
+// console.log(test)
+// console.log(user)
+// console.log(user2)
